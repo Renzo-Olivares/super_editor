@@ -41,12 +41,18 @@ abstract class TextInputConnectionDecorator implements TextInputConnection {
           required FontWeight? fontWeight,
           required TextDirection textDirection,
           required TextAlign textAlign}) =>
-      client?.setStyle(
+      client?.updateStyle(
+        TextInputStyle(
           fontFamily: fontFamily,
           fontSize: fontSize,
           fontWeight: fontWeight,
           textDirection: textDirection,
-          textAlign: textAlign);
+          textAlign: textAlign,
+        )
+      );
+
+  @override
+  void updateStyle(TextInputStyle style) => client?.updateStyle(style);
 
   @override
   void requestAutofill() => client?.requestAutofill();
