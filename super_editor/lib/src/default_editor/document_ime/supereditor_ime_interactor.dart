@@ -543,12 +543,14 @@ class SuperEditorImeInteractorState extends State<SuperEditorImeInteractor> impl
     }
 
     final style = selectedComponent.getTextStyleAt(nodePosition.offset);
-    SuperIme.instance.getImeConnectionForOwner(_myImeId)!.setStyle(
-          fontFamily: style.fontFamily,
-          fontSize: style.fontSize,
-          fontWeight: style.fontWeight,
-          textDirection: selectedComponent.textDirection ?? TextDirection.ltr,
-          textAlign: selectedComponent.textAlign ?? TextAlign.left,
+    SuperIme.instance.getImeConnectionForOwner(_myImeId)!.updateStyle(
+          TextInputStyle(
+            fontFamily: style.fontFamily,
+            fontSize: style.fontSize,
+            fontWeight: style.fontWeight,
+            textDirection: selectedComponent.textDirection ?? TextDirection.ltr,
+            textAlign: selectedComponent.textAlign ?? TextAlign.left,
+          ),
         );
   }
 
